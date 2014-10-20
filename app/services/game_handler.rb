@@ -4,7 +4,7 @@ class GameHandler
   USERNAME = 'SlackGame'
 
   def initialize(username, message)
-    @@username = @username
+    @username = @username
     @message = message
   end
 

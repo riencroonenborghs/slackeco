@@ -18,7 +18,7 @@ class Score < ActiveRecord::Base
 
   def self.score(username)
     score = get_score_object(username)
-    "(#{username} | #{score.games_played}) games | #{score.games_won} wins | #{score.games_draw} draws" 
+    "(#{username} | #{score.games_played} games | #{score.games_won} wins | #{score.games_draw} draws" 
   end
 
 private

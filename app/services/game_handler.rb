@@ -1,10 +1,10 @@
 class GameHandler
-  attr_accessor :user_name, :message
+  attr_accessor :username, :message
 
   USERNAME = 'SlackGame'
 
   def initialize(username, message)
-    @@user_name = @user_name
+    @@username = @username
     @message = message
   end
 
@@ -33,11 +33,14 @@ private
       my_move     = MOVES[rand(MOVES.size)]
       response    =   case WINS[MOVES.index(their_move)][MOVES.index(my_move)] 
                       when 0
-                        {message: "I have :#{my_move}: You win!"}
+                        ::Score.game_won!(@username)
+                        {message: "I have :#{my_move}: You win! #{Score.score(@username)}"}
                       when 1
-                        {message: "I have :#{my_move}: I win!"}
+                        ::Score.game_lost!(@username)
+                        {message: "I have :#{my_move}: I win! #{Score.score(@username)}"}
                       when nil
-                        {message: "I have :#{my_move}: Let's call it a draw!"}
+                        ::Score.game_draw!(@username)
+                        {message: "I have :#{my_move}: Let's call it a draw! #{Score.score(@username)}"}
                       end
 
       SlackWriter.push!(USERNAME, response[:message])

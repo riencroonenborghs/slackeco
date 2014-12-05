@@ -23,7 +23,7 @@ private
 
   def handle_list
     SlackWriter.push!(USERNAME, 'http://slackmeme.croonenborghs.net/list')
-    'http://slackmeme.croonenborghs.net/list'
+    {list: 'http://slackmeme.croonenborghs.net/list'}
   end
 
   def handle_meme

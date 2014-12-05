@@ -36,7 +36,7 @@ module ImgFlip
       # e.g. One Does Not Simply|line1|line2
       name, @line_1, @line_2 = (message || '').split("|")
 
-      MEME_DATABASE.memes.select{|x| x.name.downcase =~ name.downcase}.first
+      MEME_DATABASE.memes.select{|x| x.name.downcase.match(/#{name.downcase}/)}.first
     end
 
   end # class Generator

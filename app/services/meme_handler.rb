@@ -22,13 +22,12 @@ private
   end
 
   def handle_list
-    names = ImgFlip::MEMES.map{|x| x[:name]}
-    SlackWriter.push!(USERNAME, names.join('\n'))
-    {memes: names}
+    SlackWriter.push!(USERNAME, 'http://slackmeme.croonenborghs.net/list')
+    'http://slackmeme.croonenborghs.net/list'
   end
 
   def handle_meme
-    generator = ::ImgFlip.new(parsed_message)
+    generator = ::ImgFlip::Generator.new(parsed_message)
     if generator.valid?
       hash = generator.generate!
       SlackWriter.push!(USERNAME, hash[:image_url])

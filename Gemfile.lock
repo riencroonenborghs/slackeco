@@ -35,6 +35,8 @@ GEM
     dotenv-rails (1.0.1)
       dotenv (= 1.0.1)
     erubis (2.7.0)
+    haml (4.0.5)
+      tilt
     hike (1.2.3)
     i18n (0.6.11)
     json (1.8.1)
@@ -105,6 +107,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv-rails
+  haml
   rails (= 4.1.6)
   rspec-rails
   sqlite3

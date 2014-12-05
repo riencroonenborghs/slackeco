@@ -1,0 +1,9 @@
+%h1
+  List
+
+-@memes.each do |meme|
+  %p
+    =meme.name
+    =link_to 'template', meme.template_url
+    %pre
+      slackmeme: #{meme.name}|line1|line2

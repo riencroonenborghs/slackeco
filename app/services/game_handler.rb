@@ -9,7 +9,7 @@ class GameHandler
   end
 
   def process!
-    if parsed_message =~ /rock-paper-scissors/
+    if parsed_message =~ /rock-paper-scissor(s?)/
       play_rock_paper_scissors!
     end
   end

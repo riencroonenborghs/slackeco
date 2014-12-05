@@ -1,0 +1,1 @@
+MEME_DATABASE = ImgFlip::MemeDatabase.new

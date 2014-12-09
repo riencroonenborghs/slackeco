@@ -26,7 +26,7 @@ IMGFLIP_PASSWORD=itsasecret
 
 ### Slack
 
-Go to your Slack account and set up an outgoing webhook, and have it point to your server. Use trigger words slackmeme: and slackgame:. Also set up an incoming webhook for the channel you want. Put the incoming webhook URL, trigger words and channel in your .env. You can disable the outgoing hook for testing purposes.
+Go to your Slack account and set up an outgoing webhook, and have it point to your server. Use trigger words `slackmeme:` and `slackgame:`. Also set up an incoming webhook for the channel you want. Put the `incoming webhook URL`, `trigger words` and `channel` in your .env. You can disable the outgoing hook for testing purposes. The `meme list url` is added here too because i'm too lazy to handle it in another way.
 
 ```
 INCOMING_HOOK=slackurl
@@ -34,6 +34,7 @@ MEME_TRIGGER_WORD=slackmeme:
 GAME_TRIGGER_WORD=slackgame:
 CHANNEL=channel
 OUTGOING_HOOK_ENABLED=1
+MEME_LIST_URL=http://full.url.to/list
 ```
 
 ## How it works
@@ -47,27 +48,30 @@ Based on the trigger words, the app will either:
 
 ## Memes
 
+### Meme list
 ```
 slackmeme: give me the list please
 ```
-and it will post something like
+This will post the URL to the list view (full url from your .env). The list view gives an overview of the Top 100 memes of the last 30 days from [Imgflip](https://imgflip.com/), with a name, template image and example how to use it in Slack. 
+
+### Generate a meme
 ```
-SlackMeme: one does not simply _X_
-i dont always _X_ but when I do _Y_
-not sure if _X_ or _Y_
-what if i told you _X_
-brace yourselves _X_
-...
+slackmeme: meme-name|line1|line2
 ```
+This will generate the meme and post the URL into Slack. Slack will autoload the image and fun will be had. 
+
+`line1` and `line2` are optional (e.g. `meme-name||line2` or `meme-name|line1`)
+
+The `meme-name` is partially matched with the full name from the list (e.g. `Ski|line1|line2` matches the full `Super Cool Ski Instructor|line1|line2`). If more than one name is matched, slackmeme will take the first one.
 
 ## Rock-paper-scissors
 
 ```
 slackgame: rock-paper-scissors: :hand:
 ```
-and it will post something like
+and it will post 
 ```
-SlackGame: I have :fist: You win!
+SlackGame: I have :v: You win! (<your name> | 12 games | 2 wins | 4 draws)
 ...
 ```
 

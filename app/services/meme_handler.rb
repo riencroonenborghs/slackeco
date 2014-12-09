@@ -22,8 +22,8 @@ private
   end
 
   def handle_list
-    SlackWriter.push!(USERNAME, 'http://slackmeme.croonenborghs.net/list')
-    {list: 'http://slackmeme.croonenborghs.net/list'}
+    SlackWriter.push!(USERNAME, ENV['MEME_LIST_URL'])
+    {list: ENV['MEME_LIST_URL']}
   end
 
   def handle_meme

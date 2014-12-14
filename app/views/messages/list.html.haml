@@ -1,9 +1,10 @@
 %h1
   List
 
--@memes.each do |meme|
-  %p
-    =meme.name
-    =link_to 'template', meme.template_url
-    %pre
-      slackmeme: #{meme.name}|line1|line2
+.table
+  -@memes.each do |meme|
+    .cell{style: 'float: left; border: 1px solid grey; padding: 2px; max-width: 300px; min-width: 300px; max-height: 175px; min-height: 175px'}
+      .name=meme.name
+      .image=link_to image_tag(meme.template_url, style: 'height: 100px'), meme.template_url
+      .example{style: 'color: grey; font-size: 10pt;'}
+        slackmeme: #{meme.name}|line1|line2
